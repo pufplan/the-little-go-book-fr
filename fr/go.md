@@ -1,18 +1,18 @@
-# About This Book
+# A propos de ce livre
 
-## License
+## Licence
 
-The Little Go Book is licensed under the Attribution-NonCommercial-ShareAlike 4.0 International license. You should not have paid for this book.
+Le "Little Go Book" utilise la licence Attribution-NonCommercial-ShareAlike 4.0 International. Vous ne devriez pas payer pour ce livre.
 
-You are free to copy, distribute, modify or display the book. However, I ask that you always attribute the book to me, Karl Seguin, and do not use it for commercial purposes.
+Vous êtes libre de copier, distribuer, modifier ou afficher le livre. Néanmoins, je vous demande de toujours m'attribuer, à moi Karl Seguin, le livre et de ne pas l'utiliser à des fins commerciales.
 
-You can see the full text of the license at:
+Vous pouvez consulter l'intégralité du texte de la licence sur :
 
 <https://creativecommons.org/licenses/by-nc-sa/4.0/>
 
-## Latest Version
+## Dernière version
 
-The latest source of this book is available at:
+Les dernières sources de ce livre sont disponibles à :
 <https://github.com/karlseguin/the-little-go-book>
 
 # Introduction
