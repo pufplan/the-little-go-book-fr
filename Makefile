@@ -14,16 +14,16 @@ EPUB_BUILDER_FLAGS = \
 MOBI_BUILDER = kindlegen
 
 
-en/go.pdf:
-	cd en && $(PDF_BUILDER) $(PDF_BUILDER_FLAGS) $(SOURCE_FILE_NAME) -o $(BOOK_FILE_NAME).pdf
+fr/go.pdf:
+	cd fr && $(PDF_BUILDER) $(PDF_BUILDER_FLAGS) $(SOURCE_FILE_NAME) -o $(BOOK_FILE_NAME).pdf
 
-en/go.epub: en/title.png en/title.txt en/go.md
+fr/go.epub: fr/title.png fr/title.txt fr/go.md
 	$(EPUB_BUILDER) $(EPUB_BUILDER_FLAGS) $^ -o $@
 
-en/go.mobi: en/go.epub
+fr/go.mobi: fr/go.epub
 	$(MOBI_BUILDER) $^
 
-all: en/go.pdf en/go.mobi
+all: fr/go.pdf fr/go.mobi
 
 clean:
 	rm -f */$(BOOK_FILE_NAME).pdf
