@@ -1,77 +1,79 @@
-## About ##
-[The Little Go Book](http://openmymind.net/The-Little-Go-Book/) is a free book introducing Go.
+## A propos ##
+[The Little Go Book](http://openmymind.net/The-Little-Go-Book/) est un livre gratuit d'introduction à Go.
 
-The book was written by [Karl Seguin](http://openmymind.net), author of:
+Le livre a été écrit par [Karl Seguin](http://openmymind.net), l'auteur de:
 
 * [Scaling Viki](http://openmymind.net/scaling-viki/)
 * [The Little Redis Book](http://openmymind.net/2012/1/23/The-Little-Redis-Book/)
 * [The Little MongoDB Book](http://openmymind.net/2011/3/28/The-Little-MongoDB-Book/)
 * [Foundations of Programming](http://openmymind.net/FoundationsOfProgramming.pdf)
 
-## License ##
-The book is freely distributed under the  [Attribution-NonCommercial-ShareAlike 4.0 International](<http://creativecommons.org/licenses/by-nc-sa/4.0/>).
+## Licence ##
+Le livre est distribué gratuitement sous la licence  [Attribution-NonCommercial-ShareAlike 4.0 International](<http://creativecommons.org/licenses/by-nc-sa/4.0/>).
 
-## Translations ##
+## Traductions ##
 
 * [Spanish](https://github.com/raulexposito/the-little-go-book/tree/master/es) by Raúl Expósito
 * [Chinese](https://github.com/songleo/the-little-go-book_ZH_CN) by Songleo
 * [Traditional Chinese](https://github.com/kevingo/the-little-go-book) by KevinGo
 * [Vietnamese](https://github.com/quangnh89/the-little-go-book/blob/master/vi/readme.md) by Quang Nguyễn
 * [Italian](https://github.com/francescomalatesta/the-little-go-book-ita) by Francesco Malatesta
+* [Français](https://github.com/pufplan/the-little-go-book-fr) par pufplan
 
 ## Formats ##
-The book is written in [Markdown](http://daringfireball.net/projects/markdown/) and converted to PDF using [Pandoc](http://johnmacfarlane.net/pandoc/).
+Le livre est écrit en [Markdown](http://daringfireball.net/projects/markdown/) et converti en PDF en utilisant [Pandoc](http://johnmacfarlane.net/pandoc/).
 
-The TeX template makes use of [Lena Herrmann's JavaScript highlighter](http://lenaherrmann.net/2010/05/20/javascript-syntax-highlighting-in-the-latex-listings-package).
+Le modèle Tex se sert de [Lena Herrmann's JavaScript highlighter](http://lenaherrmann.net/2010/05/20/javascript-syntax-highlighting-in-the-latex-listings-package).
 
-Kindle and ePub format provided using [Pandoc](http://johnmacfarlane.net/pandoc/).
+Les formats Kindle et ePub sont produit par [Pandoc](http://johnmacfarlane.net/pandoc/).
 
-## Generating books ##
-Packages listed below are for Ubuntu. If you use another OS or distribution names would be similar.
+## Génération des différents formats du livre ##
+Les paquets ci-dessous sont pour Ubuntu ; ils devraient être similaires pour les autres distribution.
 
 ### PDF
 
-#### Dependencies
+#### Dépendances
 
-Packages:
+Paquets:
 
 * `pandoc`
 * `texlive-xetex`
 * `texlive-latex-extra`
 * `texlive-latex-recommended`
 
-You should have [some fonts](https://github.com/karlseguin/the-little-redis-book/blob/master/common/pdf-template.tex#L11) installed too.
-Or you could change them to other ones if you want. Consider that fonts could cause [building troubles](https://github.com/karlseguin/the-little-redis-book/issues/26).
+Vous devez également installer ces [polices d'écriture](https://github.com/karlseguin/the-little-redis-book/blob/master/common/pdf-template.tex#L11).
 
-#### Building
+Ou vous pouvez en utiliser d'autres si vous le souhaitez. Attention toutefois, certaines peuvent causer des [problèmes de compilation](https://github.com/karlseguin/the-little-redis-book/issues/26).
 
-Run `make en/go.pdf`.
+#### Compilation
+
+Exécutez `make fr/go.pdf`.
 
 ### ePub
 
-#### Dependencies
+#### Dépendances
 
-Packages:
+Paquets:
 
 * `pandoc`
 
-#### Building
+#### Compilation
 
-Run `make en/go.epub`.
+Exécutez `make fr/go.epub`.
 
 ### Mobi
 
-#### Dependencies
+#### Dépendances
 
-Packages:
+Paquets:
 
 * `pandoc`
 
-You should have [KindleGen](http://www.amazon.com/gp/feature.html?ie=UTF8&docId=1000765211) installed too.
+Vous devez également installer [KindleGen](http://www.amazon.com/gp/feature.html?ie=UTF8&docId=1000765211).
 
-#### Building
+#### Compilation
 
-Run `make en/go.mobi`.
+Exécutez `make fr/go.mobi`.
 
-## Title Image ##
-A PSD of the title image is included. The font used is [Comfortaa](http://www.dafont.com/comfortaa.font).
+## Image du titre ##
+Un PSD de l'image du titre est inclus. La police utilisée est [Comfortaa](http://www.dafont.com/comfortaa.font).
