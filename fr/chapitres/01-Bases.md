@@ -94,9 +94,9 @@ Si vous voulez, vous pouvez modifier le code et changer le nom du paquet. Exécu
 
 ## Imports
 
-Go has a number of built-in functions, such as `println`, which can be used without reference. We can't get very far though, without making use of Go's standard library and eventually using third-party libraries. In Go, the `import` keyword is used to declare the packages that are used by the code in the file.
+Go a un certain nombre de fonctions incluses, comme `println`, qui peuvent être utilisées sans références. Nous ne pouvons pas aller très loin sans utiliser la librairie standard de Go et éventuellement des librairies tierces. En Go, le mot-clé `import` est utilisé pour déclarer un paquet qui est utilisé dans le code du fichier source.
 
-Let's change our program:
+Modifions notre programme :
 
 ```go
 package main
@@ -114,17 +114,16 @@ func main() {
 }
 ```
 
-Which you can run via:
+Que vous pouvez exécuter via :
 
 ```
 go run main.go 9000
 ```
+Nous utilisons deux des paquets standards de Go : `fmt` et `os`. Nous avons également introduit l'utilisation d'une autre fonction stadard `len`. `len` retourne la taille d'une `string` ou le nombre de valeur dans un dictionnaire ou, comme nous le voyons ici, le nombre d'élément d'un tableau. Si vous vous demandez pourquoi nous attendons deux arguments, c'est parce le premier arguement (à l'index 0) est toujours le chemin courant où s'exécute le programme. (Modifiez le programme pour qu'il l'affiche et que vous le voyez par vous même).
 
-We're now using two of Go's standard packages: `fmt` and `os`. We've also introduced another built-in function `len`. `len` returns the size of a string, or the number of values in a dictionary, or, as we see here, the number of elements in an array. If you're wondering why we expect 2 arguments, it's because the first argument -- at index 0 -- is always the path of the currently running executable. (Change the program to print it out and see for yourself.)
+Vous avez probablement noté que nous préfixons le nom de la fonction avec son paquet, c'est à dire `fmt.Println`. Ceci est différent de la plupart des autres langages ; nous en apprendrons plus sur les paquets dans les chapitres suivants. Pour l'instant, savoir comment importer et utiliser un paquet est un bon début.
 
-You've probably noticed we prefix the function name with the package, e.g., `fmt.Println`. This is different from many other languages. We'll learn more about packages in later chapters. For now, knowing how to import and use a package is a good start.
-
-Go is strict about importing packages. It will not compile if you import a package but don't use it. Try to run the following:
+Go est strict quant à l'importation des paquets. Il ne compilera pas si vous importez un paquet que vous n'utilisez pas. Essayez d'exécuter le code suivant :
 
 ```go
 package main
@@ -138,25 +137,25 @@ func main() {
 }
 ```
 
-You should get two errors about `fmt` and `os` being imported and not used. Can this get annoying? Absolutely. Over time, you'll get used to it (it'll still be annoying though). Go is strict about this because unused imports can slow compilation; admittedly a problem most of us don't have to this degree.
+Vous devriez avoir deux erreurs à propos de `fmt` et `os` qui sont importés mais non utilisés. Est-ce ennuyant ? Absolument. Vous vous y habituerez (ca va quand même être ennuyeux). Go est strict sur ce point car des imports non utilisés peuvent ralentir la compilation ; à un point que nous n'imaginons pas à ce niveau.
 
-Another thing to note is that Go's standard library is well documented. You can head over to <https://golang.org/pkg/fmt/#Println> to learn more about the `Println` function that we used. You can click on that section header and see the source code. Also, scroll to the top to learn more about Go's formatting capabilities.
+Une autre chose à savoir est que la librairie standard de Go est très bien documentée. Vous pouvez jetez un coup d'oeil à <https://golang.org/pkg/fmt/#Println> pour en apprendre plus sur la fonction `Println` qui est utilisée. Vous pouvez cliquer sur l'entête de la section pour voir le code source. De plus, défilez vers le haut pour en apprendre plus sur les possibilités de formatage de Go.
 
-If you're ever stuck without internet access, you can get the documentation running locally via:
+Si vous avez des soucis d'acccès à Internet, vous pouvez consulter localement la documentation via :
 
 ```
 godoc -http=:6060
 ```
 
-and pointing your browser to `http://localhost:6060`
+et aller avec votre navigateur sur `http://localhost:6060`
 
-## Variables and Declarations
+## Variables et déclarations
 
-It'd be nice to begin and end our look at variables by saying *you declare and assign to a variable by doing x = 4.* Unfortunately, things are more complicated in Go. We'll begin our conversation by looking at simple examples. Then, in the next chapter, we'll expand this when we look at creating and using structures. Still, it'll probably take some time before you truly feel comfortable with it.
+Ca serait bien si on pouvait faire le tour de la question des déclarations de variable en disant *on déclare et assigne une variable en faisant x = 4*. Malheureusement, ce n'est pas aussi simple. Nous allons débuter avec des exemples simples. Puis, au prochain chapitre, nous approfondirons avec la création et l'utilisation des structures. Néanmoins, il vous faudra certainement un peu de temps pour vous sentir vraiment à l'aise avec ça.
 
-You might be thinking *Woah! What can be so complicated about this?* Let's start looking at some examples.
+Vous pouvez être en train de vous dire *Woah ! C'est si compliqué que ça ?* Regardons quelques exemples.
 
-The most explicit way to deal with variable declaration and assignment in Go is also the most verbose:
+La manière la plus explicite de traiter de la déclaration et de l'assignement des variables en Go est également la plus verbeuse :
 
 ```go
 package main
@@ -172,19 +171,19 @@ func main() {
 }
 ```
 
-Here, we declare a variable `power` of type `int`. By default, Go assigns a zero value to variables. Integers are assigned `0`, booleans `false`, strings `""` and so on. Next, we assign `9000` to our `power` variable. We can merge the first two lines:
+Ici, nous déclarons une variable `power` de type `int`. Par défaut, Go assigne une valeur nulle au variable. Les entiers reçoivent `0`, les booléens `false`, les chaînes de caractères `""` et d'autre. Ensuite, nous assignons `9000` à notre variable `power`. Nous pouvons fusionner les deux première lignes :
 
 ```go
 var power int = 9000
 ```
 
-Still, that's a lot of typing. Go has a handy short variable declaration operator, `:=`, which can infer the type:
+Il reste toujours le typage. Go à un opérateur plus pratique qui est capable de déduire le type déclaré :
 
 ```go
 power := 9000
 ```
 
-This is handy, and it works just as well with functions:
+C'est pratique et cela fonctionne également avec les fonctions :
 
 ```go
 func main() {
@@ -196,7 +195,7 @@ func getPower() int {
 }
 ```
 
-It's important that you remember that `:=` is used to declare the variable as well as assign a value to it. Why? Because a variable can't be declared twice (not in the same scope anyway). If you try to run the following, you'll get an error.
+Il est important que vous vous souveniez que `:=` est utilisé pour déclarer tout en assignant une valeur à une variable. Pourquoi ? Parce qu'une variable ne peut être déclarée deux fois (tout du moins pas dans le même périmétre). Si vous essayez d'exécutez le code suivant, vous obtiendrez une erreur :
 
 ```go
 func main() {
@@ -210,10 +209,9 @@ func main() {
 }
 ```
 
-The compiler will complain with *no new variables on left side of :=*. This means that when we first declare a variable, we use `:=` but on subsequent assignment, we use the assignment operator `=`. This makes a lot of sense, but it can be tricky for your muscle memory to remember when to switch between the two.
+Le compilateur va lever une erreur *no new variables on left side of :=*. Ceci veut dire que lors de la première déclaration de variable, nous utilisons `:=` mais pour assignber une nouvelle valeur, nous utiliserons l'opérateur `=`. cela fait sens mais il peut être difficile de se souvenir quand utiliser l'un ou l'autre.
 
-If you read the error message closely, you'll notice that *variables* is plural. That's because Go lets you assign multiple variables (using either `=` or `:=`):
-
+Si vous regardez de près le message d'erreur, vous noterez que *variables* est au pluriel. Ceci est dû au fait que Go vous permet d'assigner plusieurs variables sur la même ligne (aussi bien avec `=` qu'avec `:=`) :
 
 ```go
 func main() {
@@ -222,7 +220,7 @@ func main() {
 }
 ```
 
-As long as one of the variables is new, `:=` can be used. Consider:
+Si au moins l'une des variables est nouvelle, vous devez utiliser `:=` :
 
 ```go
 func main() {
@@ -234,9 +232,9 @@ func main() {
 }
 ```
 
-Although `power` is being used twice with `:=`, the compiler won't complain the second time we use it, it'll see that the other variable, `name`, is a new variable and allow `:=`. However, you can't change the type of `power`. It was declared (implicitly) as an integer and thus, can only be assigned integers.
+Bien que `power` est déjà utilisé deux fois avec `:=`, le compilateur ne lèvera pas d'erreur, il verra que `name` est une nouvelle variable et permet donc l'utilisation de `:=`. Néanmoins, vous ne pouvez pas changer le type de `power`, il est déclaré implicitement comme un entier et peut donc se voir assigné uniquement des entiers.
 
-For now, the last thing to know is that, like imports, Go won't let you have unused variables. For example,
+Pour le moment, la dernière chose à savoir, comme les imports, Go ne vous autorise pas de na pas utiliser des variables déclarées. Par exemple :
 
 ```go
 func main() {
@@ -245,13 +243,13 @@ func main() {
 }
 ```
 
-won't compile because `name` is declared but not used. Like unused imports it'll cause some frustration, but overall I think it helps with code cleanliness and readability.
+ne compilera pas car `name` est déclaré mais non utilisé. Tout comme les import non utilisés peuvent causer de la frustration, je pense que ceci nous aide à gerder un code propre et lisible.
 
-There's more to learn about declaration and assignments. For now, remember that you'll use `var NAME TYPE` when declaring a variable to its zero value, `NAME := VALUE` when declaring and assigning a value, and `NAME = VALUE` when assigning to a previously declared variable.
+Il y en a encore à apprendre sur les déclarations et les assignations mais pour le moment, souvenez-vous que l'on utilise `var NAME TYPE` quand on déclare une variable à sa valeur nulle, `NAME := VALUE` quand on déclare et assigne une valeur et `NAME = VALUE` lorsque l'on assigne une nouvelle valeur à une variable précédemment déclarée.
 
-## Function Declarations
+## Déclarations de fonctions
 
-This is a good time to point out that functions can return multiple values. Let's look at three functions: one with no return value, one with one return value, and one with two return values.
+C'est le moment de préciser que les fonctions peuvent retourner de multiples valeurs. Regardez ces trois fonctions : une sans retour de valeur, une avec une valeur de retour et une qui retourne deux valeurs :
 
 ```go
 func log(message string) {
@@ -264,7 +262,7 @@ func power(name string) (int, bool) {
 }
 ```
 
-We'd use the last one like so:
+Nous utilisons la dernière de cette façon :
 
 ```go
 value, exists := power("goku")
@@ -273,7 +271,7 @@ if exists == false {
 }
 ```
 
-Sometimes, you only care about one of the return values. In these cases, you assign the other values to `_`:
+Parfois, seule l'une des valeurs vous intéresse. Dans ce cas, vous assignez `_` à l'autre valeur :
 
 ```go
 _, exists := power("goku")
@@ -282,22 +280,21 @@ if exists == false {
 }
 ```
 
-This is more than a convention. `_`, the blank identifier, is special in that the return value isn't actually assigned. This lets you use `_` over and over again regardless of the returned type.
+Ceci est plus qu'une convention. `_`, l'identifiant vide (*blank identifier*) est spécial dans le sens où la valeur de retour n'est en fait pas assigné. Ceci vous permet d'utiliser `_` sans se préoccuper du type retourné par la fonction.
 
-Finally, there's something else that you're likely to run into with function declarations. If parameters share the same type, we can use a shorter syntax:
+Pour finir, il y a quelque chose que vous devez encore savoir sur la déclaration de fonction : si des paramétres partage le même type, vous pouvez utiliser une syntaxe plus courte : 
 
 ```go
 func add(a, b int) int {
 
 }
 ```
+Pouvoir retourner plusieurs valeurs est quelque chose que vous utiliserez souvent. Vous utiliserez fréquemment `_` pour ignorer une valeur. Les valeurs de retour nommées et les déclarations de paramètres raccourcies ne sont pas si habituel. Néanmoins vous devez les rencontrerez souvent et il est important de les connaitres.
 
-Being able to return multiple values is something you'll use often. You'll also frequently use `_` to discard a value. Named return values and the slightly less verbose parameter declaration aren't that common. Still, you'll run into all of these sooner than later so it's important to know about them.
+## Avant de continuer
 
-## Before You Continue
+Nous avons regarder plusieurs point qui peuvent sembler n'avoir aucun rapport les uns avec les autres. Nous allons doucement construire des exemples plus important et j'espère que ces points vont commencer à s'emboîter ensemble.
 
-We looked at a number of small individual pieces and it probably feels disjointed at this point. We'll slowly build larger examples and hopefully, the pieces will start to come together.
+Si vous venez d'un langage dynamique, la complexité autour du typage et des déclarations peuvent sembler comme un pas en arrière. Je vous l'accorde. Pour certain système, les langages dynamiques sont catégoriquement plus productif.
 
-If you're coming from a dynamic language, the complexity around types and declarations might seem like a step backwards. I don't disagree with you. For some systems, dynamic languages are categorically more productive.
-
-If you're coming from a statically typed language, you're probably feeling comfortable with Go. Inferred types and multiple return values are nice (though certainly not exclusive to Go). Hopefully as we learn more, you'll appreciate the clean and terse syntax.
+Si vous venez d'un langage typé statiquement, vous vous semblez probablement à l'aise avec Go. La déduction du typage et le retour de multiples valeurs sont appréciables (ce n'est pas exclusif au Go). Au fur et à mesure que vous en apprendrez plus sur le langage, vous en apprécierez la syntaxe propre et fluide.
