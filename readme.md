@@ -18,7 +18,7 @@ Le livre est distribué gratuitement sous la licence  [Attribution-NonCommercial
 * [Traditional Chinese](https://github.com/kevingo/the-little-go-book) by KevinGo
 * [Vietnamese](https://github.com/quangnh89/the-little-go-book/blob/master/vi/readme.md) by Quang Nguyễn
 * [Italian](https://github.com/francescomalatesta/the-little-go-book-ita) by Francesco Malatesta
-* [Français](https://github.com/pufplan/the-little-go-book-fr) par pufplan
+* [Français](https://github.com/pufplan/the-little-go-book-fr) par yeswearecoding
 
 ## Formats ##
 Le livre est écrit en [Markdown](http://daringfireball.net/projects/markdown/) et converti en PDF en utilisant [Pandoc](http://johnmacfarlane.net/pandoc/).
