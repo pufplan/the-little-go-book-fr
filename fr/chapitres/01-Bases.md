@@ -1,26 +1,27 @@
-# Chapter 1 - The Basics
+# Chapitre 1 : les bases
 
-Go is a compiled, statically typed language with a C-like syntax and garbage collection. What does that mean?
+Go est un langage compilé, typé statiquement avec une syntaxe similaire au C et avec un ramasse-miette. Qu'est ce que cela signifie ?
 
 ## Compilation
 
-Compilation is the process of translating the source code that you write into a lower level language -- either assembly (as is the case with Go), or some other intermediary language (as with Java and C#).
+La compilation est le processus qui transforme le code source (que vous avez écrit) en un langage bas niveau (comme de l'assembleur pour le cas de Go) ou en un langage intermédiaire (comme en Java et C#).
 
-Compiled languages can be unpleasant to work with because compilation can be slow. It's hard to iterate quickly if you have to spend minutes or hours waiting for code to compile. Compilation speed is one of the major design goals of Go. This is good news for people working on large projects as well as those of us used to a quick feedback cycle offered by interpreted languages.
+Il est parfois désagréable de travailler avec des langages compilés car cette compilation peut être longue. Il devient difficile d'intégrer régulièrement des modifications si vous devez attendre de longues minutes (voir des heures) que votre code compile. Cette vitesse de compilation est l'un des buts principaux de Go. Ce qui est une bonne nouvelle pour les personnes qui travaillent sur de large projets, tout autant pour ceux qui ont l'habitude des langages interprétés où il est facile de prendre en compte de nouvelles modifications.
 
-Compiled languages tend to run faster and the executable can be run without additional dependencies (at least, that's true for languages like C, C++ and Go which compile directly to assembly).
+Les langages compilés ont tendance à s'exécuter plus rapidement et sans dépendances supplémentaires (tout du moins, c'est vrai pour des langages comme le C, le C++ et le Go qui compile en assembleur).
 
-## Static Typing
+## Typage statique
 
-Being statically typed means that variables must be of a specific type (int, string, bool, []byte, etc.). This is either achieved by specifying the type when the variable is declared or, in many cases, letting the compiler infer the type (we'll look at examples shortly).
+Etre typé statiquement signifie que les variables doivent être d'un type précis (int, string, bool, []byte, etc.). Ce typage est spécifié lors de la déclaration de la variable, ou dans de nombreux cas, le compilateur déduit directement ce type (nous allons voir un exemple rapidement).
 
-There's a lot more that can be said about static typing, but I believe it's something better understood by looking at code. If you're used to dynamically typed languages, you might find this cumbersome. You're not wrong, but there are advantages, especially when you pair static typing with compilation. The two are often conflated. It's true that when you have one, you normally have the other but it isn't a hard rule. With a rigid type system, a compiler is able to detect problems beyond mere syntactical mistakes as well as make further optimizations.
+Beaucoup de chose peuvent être dite sur le typage statique mais je crois qu'il est plus facile de la comprendre en regardant le code. Si vous utilisez un langage à typage dynamique, vous pourriez trouver cela encombrant. Vous n'avez pas tord, mais il y a des avantages, particulièrement lorsque vous associez le typage statique avec la compilation. Les deux sont souvent confus. Il est vrai que lorsque vous en avez un, vous avez normalement l'autre mais ce n'est pas forcément toujours le cas. Avec un système de typage rigide, le compilateur est capable de détecter des problèmes au-delà de simples erreurs syntaxiques et également d'autres optimisations. 
 
-## C-Like Syntax
+## Syntaxe proche du C
 
-Saying that a language has a C-like syntax means that if you're used to any other C-like languages such as C, C++, Java, JavaScript and C#, then you're going to find Go familiar -- superficially, at least. For example, it means `&&` is used as a boolean AND, `==` is used to compare equality, `{` and `}` start and end a scope, and array indexes start at 0.
+Dire que ce langage a une syntaxe proche du C siginifie que si vous utilisez un autre langage également proche du C (C, C++, Java, JavaScript et C#), vous allez trouver Go familier, superficiellement du moins. Par example, cela signifie que `&&` est utilisé comme booléen AND, `==` est utilisé pour tester l'égalité, `{` et `}` débutent et terminent un bloc et les tableaux débutent à l'indice 0.
 
-C-like syntax also tends to mean semi-colon terminated lines and parentheses around conditions. Go does away with both of these, though parentheses are still used to control precedence. For example, an `if` statement looks like this:
+La syntaxe proche du C à également tendance à signifier que les point-virgule terminent les lignes et qu'il y a des parenthèses autour des conditions. Go n'applique pas ces principes bien que les parenthèses soient utilisées pour controler la priorité. Par exemple, une boucle `if` ressemble à :
+
 
 ```go
 if name == "Leto" {
@@ -28,7 +29,7 @@ if name == "Leto" {
 }
 ```
 
-And in more complicated cases, parentheses are still useful:
+Et dans des cas cas plus compliqués, les parenthèses sont utiles :
 
 ```go
 if (name == "Goku" && power > 9000) || (name == "gohan" && power < 4000)  {
@@ -36,17 +37,17 @@ if (name == "Goku" && power > 9000) || (name == "gohan" && power < 4000)  {
 }
 ```
 
-Beyond this, Go is much closer to C than C# or Java - not only in terms of syntax, but in terms of purpose. That's reflected in the terseness and simplicity of the language which will hopefully start to become obvious as you learn it.
+Au-delà de ça, Go est plus proche du C que C# ou Java, pas seulement en terme de syntaxe, mais en terme d'objectif. Cela se reflète dans la finesse et la simplicité du langage ce qui, nous l'espérons, commencera à devenir évident à mesure que vous l'apprendrez.
 
-## Garbage Collected
+## Ramasse-miettes
 
-Some variables, when created, have an easy-to-define life. A variable local to a function, for example, disappears when the function exits. In other cases, it isn't so obvious -- at least to a compiler. For example, the lifetime of a variable returned by a function or referenced by other variables and objects can be tricky to determine. Without garbage collection, it's up to developers to free the memory associated with such variables at a point where the developer knows the variable isn't needed. How? In C, you'd literally `free(str);` the variable.
+Certaines variables, quand elles sont crées, ont un cycle de vie facile à déterminer. Une variable locale à une fonction par exemple disparait à la fin de l'appel. Dans d'autres cas, ce n'est pas si évident, tout du moins pour le compilateur. Par exemple, la durée de vie d'une variable retournée par une fonction ou référencée par d'autres variables ou objets peut être difficile à déterminer. Sans un ramasse-miettes, c'est au développeur de libérer la mémoire lorsque la variable n'est plus utile. Comment ? En C, vous libérez littéralement la variable avec `free(str);`.
 
-Languages with garbage collectors (e.g., Ruby, Python, Java, JavaScript, C#, Go) are able to keep track of these and free them when they're no longer used. Garbage collection adds overhead, but it also eliminates a number of devastating bugs.
+Les langages avec un ramasse-miettes (c-à-d Ruby, Python, Java, JavaScript, C#, Go) sont capables de tracer l'utilisation des variables et de libérer lorsqu'elles ne sont plus utilisées. Le ramasse-miettes ajoute une surcouche mais élimine également un certain nombre de bug dévastateurs.
 
-## Running Go Code
+## Exécuter du code Go
 
-Let's start our journey by creating a simple program and learning how to compile and execute it. Open your favorite text editor and write the following code:
+Débutons notre périple par la création d'un simple programme et apprenons comment le compiler puis l'exécuter. Ouvrez votre éditeur de texte favoris et écrivez le code suivant :
 
 ```go
 package main
@@ -55,42 +56,41 @@ func main() {
   println("it's over 9000!")
 }
 ```
+Sauvegardez le fichier sous `main.go`. Pour l'instant, vous pouvez sauvegarder n'importe où ; nous n'avons pas besoin d'un espace de travail spécifique pour les exemples triviaux.
 
-Save the file as `main.go`. For now, you can save it anywhere you want; we don't need to live inside Go's workspace for trivial examples.
+Puis, ouvrez une ligne de commande et placez-vous dans le répertoire où vous avez sauvegardé le fichier. Pour moi, cela donne `cd ~/code`.
 
-Next, open a shell/command prompt and change the directory to where you saved the file. For me, that means typing `cd ~/code`.
-
-Finally, run the program by entering:
+Enfin, exécutez le programme en tapant :
 
 ```
 go run main.go
 ```
 
-If everything worked, you should see *it's over 9000!*.
+Si tout fonctionne correctement, vous devriez voir *it's over 9000!*.
 
-But wait, what about the compilation step? `go run` is a handy command that compiles *and* runs your code. It uses a temporary directory to build the program, executes it and then cleans itself up. You can see the location of the temporary file by running:
+Mais attendez, qu'en est-il de l'étape de compilation ? `go run` est une commande bien pratique qui compile *et* exécute votre code. Elle utilise un répertoire temporaire pour compiler le programme, l'exécuter puis s'auto-nettoyer. Pour voir l'emplacement temporaire utilisé :
 
 ```
 go run --work main.go
 ```
 
-To explicitly compile code, use `go build`:
+Pour compiler explicitement le code, utilisez `go build` :
 
 ```
 go build main.go
 ```
 
-This will generate an executable `main` which you can run. On Linux / OSX, don't forget that you need to prefix the executable with dot-slash, so you need to type `./main`.
+Ceci va générer un exécutable `main` que vous pourrez lancer. Sous Linux / OSX, n'oubliez pas de précéder d'un point et d'un slash comme ceci : `./main`.
 
-While developing, you can use either `go run` or `go build`. When you deploy your code however, you'll want to deploy a binary via `go build` and execute that.
+Lors du développement, vous pouvez tout autant utiliser `go run` ou `go build`. En revanche, lors du déploiement, vous devez générer un binaire via `go build` et exécuter ce dernier ainsi généré.
 
 ### Main
 
-Hopefully, the code that we just executed is understandable. We've created a function and printed out a string with the built-in `println` function. Did `go run` know what to execute because there was only a single choice? No. In Go, the entry point to a program has to be a function called `main` within a package `main`.
+J'espère que le code que nous venons d'exécuter est compréhensible. Nous avons créé une function et affiché une phrase avec la fonction intégrée `println`. Un `go run` sait-il ce qu'il doit exécuter parce qu'il n'existe qu'une seule possibilité ? Pas du tout, en Go le point d'entré d'un programme est la fonction `main` inclue dans le paquet `main`.
 
-We'll talk more about packages in a later chapter. For now, while we focus on understanding the basics of Go, we'll always write our code within the `main` package.
+Nous parlerons plus des paquets dans un chapitre suivant. Pour l'instant, tant que nous nous concentrons sur la compréhension des bases de Go, nous écrirons toujours notre code dans le paquet `main`.
 
-If you want, you can alter the code and change the package name. Run the code via `go run` and you should get an error. Then, change the name back to `main` but use a different function name. You should see a different error message. Try making those same changes but use `go build` instead. Notice that the code compiles, there's just no entry point to run it. This is perfectly normal when you are, for example, building a library.
+Si vous voulez, vous pouvez modifier le code et changer le nom du paquet. Exécutez le code via `go run` et vous devriez voir une erreur. Puis revenez au nom de paquet `main` mais en utilisant un nom de fonction différent. Vous devriez voir un message d'erreur différent du précédent. Répétez ces mêmes erreurs mais en utilisant à la place `go build`. Notez que le code compile, c'est juste qu'il n'y a pas de point d'entrée, ce qui est le comportement normal attendu lorsque, par exemple, vous codez une librairie.
 
 ## Imports
 
