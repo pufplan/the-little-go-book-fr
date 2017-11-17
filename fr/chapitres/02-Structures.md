@@ -1,10 +1,10 @@
-# Chapter 2 - Structures
+# Chapitre 2 - Structures
 
 Go n'est pas un langage orienté objet tel que le C++, Java, Ruby ou C#. Il n'a pas de notions d'héritage, ni de concepts d'association comme le polymorphisme et la surchage.
 
 Go utilise des structures qui peuvent être associées avec des méthodes. Go supporte également une forme de composition simple mais efficace. Quoiqu'il en soit, il en résulte un code plus simple mais dans certaines occasions, il peut manquer des facilités de la programmation orientée objet. Il vaut la peine d'être souligné que la *composition sur l'héritage* est un vieux début auxquel Go adopte une position ferme.
 
-Bien Go n'a pas les concepts orientés objets dont vous avez l'habitude, vous noterez qu'il y a beaucoup de similitudes entre une structure et une classe. Un simple exemple avec la structure `Saiyan` suivante :
+Bien que Go n'ai pas les concepts orientés objets dont vous avez l'habitude, vous noterez qu'il y a beaucoup de similitudes entre une structure et une classe. Un simple exemple avec la structure `Saiyan` suivante :
 
 ```go
 type Saiyan struct {
@@ -15,11 +15,11 @@ type Saiyan struct {
 
 Nous allons plus tard comment ajouter une méthode à cette structure, un peu comme si vous aviez une méthode d'une classe. Avant de voir cela, nous devons appronfondir les déclarations.
 
-## Declarations and Initializations
+## Déclarations et initialisations
 
-When we first looked at variables and declarations, we looked only at built-in types, like integers and strings. Now that we're talking about structures, we need to expand that conversation to include pointers.
+Quand nous avons regardé les variables et les déclarations, nous nous sommes intéressé seulement aux types par défaut comme les entiers et les chaînes de caractères. Maintenant que nous parlons des structures, nous avons besoin d'en savoir plus sur les pointeurs.
 
-The simplest way to create a value of our structure is:
+La manière la plus simple d'assigner des valeurs à notre structure est :
 
 ```go
 goku := Saiyan{
@@ -28,28 +28,28 @@ goku := Saiyan{
 }
 ```
 
-*Note:* The trailing `,` in the above structure is required. Without it, the compiler will give an error. You'll appreciate the required consistency, especially if you've used a language or format that enforces the opposite.
+*Note:* La virgule `,` au sein de la structure ci-dessus est obligatoire. Sans celle-ci, le compilateur renvoi une erreur. Vous apprécierez cette obligation, particulièrement si vous avez utilisé un langage ou un format qui vous force à faire le contraire.
 
-We don't have to set all or even any of the fields. Both of these are valid:
+Nous ne sommes pas obligé de donner une valeur pour chaque champs. Les deux déclarations ci-dessous sont valides :
 
 ```go
 goku := Saiyan{}
 
-// or
+// ou
 
 goku := Saiyan{Name: "Goku"}
 goku.Power = 9000
 ```
 
-Just like unassigned variables have a zero value, so do fields.
+Les champs qui ne reçoivent pas de valeur sont initialisé avec la valeur par défaut, de la même manière que les variables non-assignée.
 
-Furthermore, you can skip the field name and rely on the order of the field declarations (though for the sake of clarity, you should only do this for structures with few fields):
+En outre, vous pouvez omettre le nom du champs et donner des valeurs selon l'ordre de la déclaration des champs (mais pour des questions de clarté, vous ne devriez le faire que pour des structures avec peu de champs)
 
 ```go
 goku := Saiyan{"Goku", 9000}
 ```
 
-What all of the above examples do is declare a variable `goku` and assign a value to it.
+L'exemple ci-dessus déclare une variable `goku` et lui assigne des valeurs.
 
 Many times though, we don't want a variable that is directly associated with our value but rather a variable that has a pointer to our value. A pointer is a memory address; it's the location of where to find the actual value. It's a level of indirection. Loosely, it's the difference between being at a house and having directions to the house.
 
