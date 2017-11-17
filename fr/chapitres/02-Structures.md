@@ -1,10 +1,10 @@
 # Chapter 2 - Structures
 
-Go isn't an object-oriented (OO) language like C++, Java, Ruby and C#. It doesn't have objects nor inheritance and thus, doesn't have the many concepts associated with OO such as polymorphism and overloading.
+Go n'est pas un langage orienté objet tel que le C++, Java, Ruby ou C#. Il n'a pas de notions d'héritage, ni de concepts d'association comme le polymorphisme et la surchage.
 
-What Go does have are structures, which can be associated with methods. Go also supports a simple but effective form of composition. Overall, it results in simpler code, but there'll be occasions where you'll miss some of what OO has to offer. (It's worth pointing out that *composition over inheritance* is an old battle cry and Go is the first language I've used that takes a firm stand on the issue.)
+Go utilise des structures qui peuvent être associées avec des méthodes. Go supporte également une forme de composition simple mais efficace. Quoiqu'il en soit, il en résulte un code plus simple mais dans certaines occasions, il peut manquer des facilités de la programmation orientée objet. Il vaut la peine d'être souligné que la *composition sur l'héritage* est un vieux début auxquel Go adopte une position ferme.
 
-Although Go doesn't do OO like you may be used to, you'll notice a lot of similarities between the definition of a structure and that of a class. A simple example is the following `Saiyan` structure:
+Bien Go n'a pas les concepts orientés objets dont vous avez l'habitude, vous noterez qu'il y a beaucoup de similitudes entre une structure et une classe. Un simple exemple avec la structure `Saiyan` suivante :
 
 ```go
 type Saiyan struct {
@@ -13,7 +13,7 @@ type Saiyan struct {
 }
 ```
 
-We'll soon see how to add a method to this structure, much like you'd have methods as part of a class. Before we do that, we have to dive back into declarations.
+Nous allons plus tard comment ajouter une méthode à cette structure, un peu comme si vous aviez une méthode d'une classe. Avant de voir cela, nous devons appronfondir les déclarations.
 
 ## Declarations and Initializations
 
